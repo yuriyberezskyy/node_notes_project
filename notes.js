@@ -16,10 +16,19 @@ const addNote = function (title, body) {
       body: body,
     });
     saveNotes(notes);
-    console.log(notes);
+    console.log("New note added");
   } else {
     console.log("Note title taken");
   }
+};
+
+const removeNote = function (title) {
+  const notes = loadNotes();
+  const duplicateNotes = notes.filter(function (note) {
+    return note.title !== title;
+  });
+  saveNotes(duplicateNotes);
+  console.log("Node was removed");
 };
 
 const saveNotes = function (notes) {
@@ -40,4 +49,5 @@ const loadNotes = function () {
 module.exports = {
   getNotes: getNotes,
   addNote: addNote,
+  removeNote: removeNote,
 };
