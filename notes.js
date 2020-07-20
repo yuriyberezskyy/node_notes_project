@@ -1,4 +1,5 @@
 const fs = require("fs");
+const chalk = require("chalk");
 
 const getNotes = function () {
   return "Your notes...";
@@ -27,8 +28,12 @@ const removeNote = function (title) {
   const duplicateNotes = notes.filter(function (note) {
     return note.title !== title;
   });
-  saveNotes(duplicateNotes);
-  console.log("Node was removed");
+  if (notes.length !== duplicateNotes.length) {
+    saveNotes(duplicateNotes);
+    console.log(chalk.green("Node was removed"));
+  } else {
+    console.log(chalk.red("Node wasn't found"));
+  }
 };
 
 const saveNotes = function (notes) {
