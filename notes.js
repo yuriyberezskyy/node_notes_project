@@ -5,11 +5,17 @@ const getNotes = () => {
   return "Your notes...";
 };
 
+const readNote = (title) => {
+  const notes = loadNotes();
+  const note = notes.find((element) => element.title === title);
+  console.log(note);
+};
+
 const addNote = (title, body) => {
   const notes = loadNotes();
-  const duplicateNotes = notes.filter((note) => note.title === title);
+  const duplicateNote = notes.find((note) => note.title === title);
 
-  if (duplicateNotes.length === 0) {
+  if (!duplicateNote) {
     notes.push({
       title: title,
       body: body,
@@ -33,6 +39,7 @@ const removeNote = (title) => {
 };
 
 const listNotes = () => {
+  console.log(chalk.inverse("Your notes"));
   const notes = loadNotes();
   for (let i in notes) {
     console.log(notes[i].title);
@@ -59,4 +66,5 @@ module.exports = {
   addNote: addNote,
   removeNote: removeNote,
   listNotes: listNotes,
+  readNote: readNote,
 };
