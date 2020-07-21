@@ -7,8 +7,10 @@ const getNotes = () => {
 
 const readNote = (title) => {
   const notes = loadNotes();
-  const note = notes.find((element) => element.title === title);
-  console.log(note);
+  const note = notes.find((element) => {
+    return element.title === title;
+  });
+  console.log(note.body);
 };
 
 const addNote = (title, body) => {
