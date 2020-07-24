@@ -23,6 +23,7 @@ const addNote = (title, body) => {
       body: body,
     });
     saveNotes(notes);
+    console.log("Note was added");
   } else {
     console.log("Note title taken");
   }
